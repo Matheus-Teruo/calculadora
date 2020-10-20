@@ -1,0 +1,21 @@
+.input {
+    height: 2em;
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    font-size: 1.4em;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.5em;
+}
+
+.inputSec {
+    height: 1.2em;
+    display: flex;
+    justify-content: flex-end;
+    font-weight: bold;
+    font-size: 1em;
+    background-color: #000000;
+    color: #ffffff;
+    padding: 0.5em;
+}
