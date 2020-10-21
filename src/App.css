@@ -8,7 +8,17 @@
 
 .calculadora {
   width: 400px;
-  height: 500px;
+  height: 600px;
+}
+
+.botaoMemoria{
+  display: flex;
+  width: 100%;
+}
+
+.rowOperator{
+  display: flex;
+  width: 100%;
 }
 
 .Visor {
@@ -34,7 +44,20 @@
   display: flex;
 }
 
-.rowOperator{
+.memoria {
   display: flex;
-  width: 100%;
+  flex-direction: column;
+  height: 100%;
+  width: 300px;
+  height: 600px;
+  background-color: #0e0e0e;
+  border: 4px solid #bfbfbf;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1em;
+  color: #b3b3b3
 }

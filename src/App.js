@@ -2,10 +2,14 @@ import { render } from '@testing-library/react';
 import React from 'react';
 import './App.css';
 import { Botao } from './Componentes/Botao';
+import { BotaoM } from './Componentes/BotaoM';
 import { Input } from './Componentes/Input';
 import { InputSec } from './Componentes/InputSec';
+import { InputM } from './Componentes/InputM';
 import { ClearButton } from './Componentes/ClearButton';
 import { EqualButton } from './Componentes/EqualButton';
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -16,7 +20,9 @@ class App extends React.Component {
       inputSec: "",
       Operador: "",
       Resultado: false,
-      Inteiro: true
+      Inteiro: true,
+      memoria: [],
+      inputM: ""
     };
   }
 
@@ -27,6 +33,69 @@ class App extends React.Component {
     if (this.state.Resultado == true) {
       this.setState({inputAtual: val })
       this.setState({Resultado: false })
+    };
+  }
+
+  Memo = val => {
+    let Len = this.state.memoria.length-1
+    if (val == "MS") {
+      this.state.memoria.push(this.state.inputAtual)
+      this.setState({})
+    };
+    if (val == "M+") {
+      let Aux = parseFloat(this.state.memoria[Len])
+      this.state.memoria.pop()
+      this.state.memoria.push(parseFloat(this.state.inputAtual) + Aux)
+      this.setState({})
+    };
+    if (val == "MR") {
+      this.setState({inputAtual: this.memoria.M1})
+    };
+  }
+
+  MemoP1 = val => {
+    if (val == "MR") {
+      this.setState({inputAtual: this.state.memoria[0]})
+    };
+    if (val == "MC") {
+      this.state.memoria.splice(0,1)
+      this.setState({})
+    };
+  }
+  MemoP2 = val => {
+    if (val == "MR") {
+      this.setState({inputAtual: this.state.memoria[1]})
+    };
+    if (val == "MC") {
+      this.state.memoria.splice(1,1)
+      this.setState({})
+    };
+  }
+  MemoP3 = val => {
+    if (val == "MR") {
+      this.setState({inputAtual: this.state.memoria[2]})
+    };
+    if (val == "MC") {
+      this.state.memoria.splice(2,1)
+      this.setState({})
+    };
+  }
+  MemoP4 = val => {
+    if (val == "MR") {
+      this.setState({inputAtual: this.state.memoria[3]})
+    };
+    if (val == "MC") {
+      this.state.memoria.splice(3,1)
+      this.setState({})
+    };
+  }
+  MemoP5 = val => {
+    if (val == "MR") {
+      this.setState({inputAtual: this.state.memoria[4]})
+    };
+    if (val == "MC") {
+      this.state.memoria.splice(4,1)
+      this.setState({})
     };
   }
 
@@ -84,6 +153,14 @@ class App extends React.Component {
             <InputSec inputSec={this.state.inputSec + this.state.Operador} />
             <Input inputAtual={this.state.inputAtual} />
           </div>
+          <div className="botaoMemoria">
+            <Botao handleClick={() => this.setState({
+               inputAtual: "", inputSec: "", Operador: "" , Inteiro: true, Resultado: true
+               })}>MC</Botao>
+            <Botao handleClick={this.Memo}>MR</Botao>
+            <Botao handleClick={this.Memo}>M+</Botao>
+            <Botao handleClick={this.Memo}>MS</Botao>
+          </div>
           <div className="rowOperator">
               <Botao handleClick={this.Operacao}>+</Botao>
               <Botao handleClick={this.Operacao}>-</Botao>
@@ -116,6 +193,34 @@ class App extends React.Component {
             <div className="colunmEqual">
               <EqualButton handleClick={this.Equal}>=</EqualButton>
             </div>
+          </div>
+        </div>
+        <div className="memoria">
+          <div className="titulo"><h2>Memória</h2></div>
+          <InputM inputM={this.state.memoria[0]} />
+          <div className="row">;
+            <BotaoM handleClick={this.MemoP1}>MC</BotaoM>
+            <BotaoM handleClick={this.MemoP1}>MR</BotaoM>
+          </div>
+          <InputM inputM={this.state.memoria[1]} />
+          <div className="row">;
+            <BotaoM handleClick={this.MemoP2}>MC</BotaoM>
+            <BotaoM handleClick={this.MemoP2}>MR</BotaoM>
+          </div>
+          <InputM inputM={this.state.memoria[2]} />
+          <div className="row">;
+            <BotaoM handleClick={this.MemoP3}>MC</BotaoM>
+            <BotaoM handleClick={this.MemoP3}>MR</BotaoM>
+          </div>
+          <InputM inputM={this.state.memoria[3]} />
+          <div className="row">;
+            <BotaoM handleClick={this.MemoP4}>MC</BotaoM>
+            <BotaoM handleClick={this.MemoP4}>MR</BotaoM>
+          </div>
+          <InputM inputM={this.state.memoria[4]} />
+          <div className="row">;
+            <BotaoM handleClick={this.MemoP5}>MC</BotaoM>
+            <BotaoM handleClick={this.MemoP5}>MR</BotaoM>
           </div>
         </div>
       </div>
